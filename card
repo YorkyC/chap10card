@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ch10cardlab
+{
+    public enum Suit
+    {
+        Club,
+        Diamond,
+        Heart,
+        Spade
+    }
+    public enum Rank
+    {
+        Ace=1,
+        Deucee,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queene,
+        King
+    }
+    public class c
+    {
+        public readonly Suit suit;
+        public readonly Rank rank;
+        public override string ToString()
+        {
+            return "the" + rank + "of"suit + "s";
+        }
+        private Card()
+        {
+
+        }
+        public Card(Suit newSuit,Rank newRank)
+        {
+            suit = newSuit;
+            rank = newRank;
+        }
+    }
+}
