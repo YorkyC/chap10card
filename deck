@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ch10cardlab
+{
+    public class Deck
+    {
+        private Card[] cards;
+        public Deck()
+        {
+            cards = new Card[52];
+            for(int suitVal=0;suitVal<4;suitVal++)
+            {
+                for(int rankVal=1;rankVal<14;rankVal++)
+                {
+                    cards[suitVal*13+rankVal-1]=new Card((Suit)suitVal,(Rank)rankVal);
+                }
+            }
+        }
+        public Card GetCard(int cardNum)
+        {
+            if (cardNum >= 0 && cardNum <= 52)
+                return cards[cardNum];
+            else
+                throw (new System.ArgumentOutOfRangeException("cardnum", cardNum, "'s value must be between 0-52."));
+        }
+        public void shuffle()
+        {
+            Card[] newDeck = new Card[52];
+            bool[] assgined = new bool[52];
+            for(int i=0;i<52;i++)
+            {
+                int destCard = 0;
+                bool foundCard = false;
+                Random sourceGen = new Random();
+                while (foundCard == false)
+                {
+                    destCard = sourceGen.Next(52);
+                    if (assgined[destCard] == false)
+                        foundCard = true;
+
+                }
+                assgined[destCard] = true;
+                newDeck[destCard] = Card[i];
+            }
+            cards = newDeck;
+        }
+    }
+}
